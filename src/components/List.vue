@@ -8,16 +8,24 @@
                 <table class="table table-striped text-center">
                     <thead class="thead-light">
                     <tr>
-                        <th class="text-center">Empleado</th>
-                        <th class="text-center">Motilese</th>
-                        <th class="text-center">{{list[0].documento}}</th>
+                        <th class="text-center">Documento de identidad</th>
+                        <th class="text-center">Nombre completo</th>
+                        <th class="text-center">Genero</th>
+                        <th class="text-center">Estado Civil</th>
+                        <th class="text-center">Salario</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Telefono</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="reg in list"> <!-- Recorremos nuestro array -->
                         <td v-text="reg.documento"></td> <!--En la primera columna mostramos el nombre-->
                         <td v-text="reg.nombreCompleto"></td> <!--En la segunda mostramos el apellido-->
-                        <td v-text="reg.salario"></td> <!--En la segunda mostramos el apellido-->
+                        <td v-text="reg.genero"></td>
+                        <td v-text="reg.estadoCivil"></td> <!--En la segunda mostramos el apellido-->
+                        <td v-text="reg.salario"></td>
+                        <td v-text="reg.email"></td>
+                        <td v-text="reg.telefono"></td>
                     </tr>
                     </tbody>
                 </table>
