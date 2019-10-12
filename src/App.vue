@@ -6,13 +6,11 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import List from './components/List.vue'
 export default {
   name: 'app',
   components: {
-    List,
-    HelloWorld
+    List
   }
 }
 </script>

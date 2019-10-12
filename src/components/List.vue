@@ -45,7 +45,6 @@
         
         fetch('https://springlab.herokuapp.com/findAllEmp').
         then(res => res.json().then((data) => {
-            console.log(data);
             this.list = data}));
         },
     //Hay un único método que se encarga de hacer la petición al servidor y cargar la respuesta en la variable hist[]
