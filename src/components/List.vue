@@ -27,7 +27,6 @@
 </template>
 
 <script>
-    import axios from "axios";
     export default {
         name: "test",
         //Funciones que realiza al crearse o renderizarse la vista
