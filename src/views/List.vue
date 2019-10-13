@@ -15,10 +15,11 @@
                         <th class="text-center">Salario</th>
                         <th class="text-center">Email</th>
                         <th class="text-center">Telefono</th>
+                        <th class="text-center">Despedir</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="reg in list"> <!-- Recorremos nuestro array -->
+                    <tr v-for="(reg,index) in list" :key="index"> <!-- Recorremos nuestro array -->
                         <td v-text="reg.documento"></td> <!--En la primera columna mostramos el nombre-->
                         <td v-text="reg.nombreCompleto"></td> <!--En la segunda mostramos el apellido-->
                         <td v-text="reg.genero"></td>
@@ -26,6 +27,7 @@
                         <td v-text="reg.salario"></td>
                         <td v-text="reg.email"></td>
                         <td v-text="reg.telefono"></td>
+                        <td @click="despedir(reg.documento)" class="btn btn-success btn-sm">Del</td>
                     </tr>
                     </tbody>
                 </table>
@@ -39,7 +41,6 @@
         name: "test",
         //Funciones que realiza al crearse o renderizarse la vista
         created() {
-            this.getData();
         },
         //Variable de este componente que se requiere para su fincionamiento
         data() {
@@ -49,17 +50,21 @@
     }
     ,
     mounted() {
-        
-        fetch('https://springlab.herokuapp.com/findAllEmp').
-        then(res => res.json().then((data) => {
-            this.list = data}));
+        this.cargar()
         },
     //Hay un único método que se encarga de hacer la petición al servidor y cargar la respuesta en la variable hist[]
     methods: {
-        getData()
-        {
-           
-        
+        despedir(index){
+            fetch('https://springlab.herokuapp.com/delEmp/'+index,{
+                method: 'DELETE'
+            }).then(res=>{
+                this.cargar();
+            })
+        },
+        cargar(){
+            fetch('https://springlab.herokuapp.com/findAllEmp').
+            then(res => res.json().then((data) => {
+                this.list = data}));
         }
     }
     }
