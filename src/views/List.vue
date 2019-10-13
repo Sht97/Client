@@ -52,7 +52,7 @@
     mounted() {
         this.cargar()
         },
-    //Hay un único método que se encarga de hacer la petición al servidor y cargar la respuesta en la variable hist[]
+    //Hay un único método que se encarga de hacer la petición al servidor y cargar la respuesta en la variable list[]
     methods: {
         despedir(index){
             fetch('https://springlab.herokuapp.com/delEmp/'+index,{
