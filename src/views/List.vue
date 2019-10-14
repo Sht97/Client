@@ -4,7 +4,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-20">
                 <table class="table table-striped text-center">
                     <thead class="thead-light">
                     <tr>
@@ -16,6 +16,7 @@
                         <th class="text-center">Email</th>
                         <th class="text-center">Telefono</th>
                         <th class="text-center">Despedir</th>
+                        <th class="text-center">Actualizar</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,7 +28,11 @@
                         <td v-text="reg.salario"></td>
                         <td v-text="reg.email"></td>
                         <td v-text="reg.telefono"></td>
-                        <td @click="despedir(reg.documento)" class="btn btn-success btn-sm">Del</td>
+                        <td >
+                            <button class="btn btn-danger" @click="despedir(reg.documento)">Despedir</button>
+                        </td>
+                        <td> <button class="btn btn-warning" @click="actualizar(reg.documento)">Actualizar</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

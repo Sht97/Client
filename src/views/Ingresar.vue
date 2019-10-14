@@ -1,78 +1,149 @@
 <template>
-  <div class="container">
-    <div class="form">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-          <small
-            id="emailHelp"
-            class="form-text text-muted"
-          >We'll never share your email with anyone else.</small>
+  <div class="container pt-5 pb-5">
+     <form @submit="addEmpleado">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <label for="inputCedula">Cédula de la persona {{msg}}</label>
+              <input
+                type="text"
+                v-model="empleado.documento"
+                class="form-control"
+                id="inputCedula"
+                placeholder="Ingrese la cédula del nuevo trabajador"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputNombre">Nombre completo</label>
+              <input
+                      type="text"
+                      v-model="empleado.nombreCompleto"
+                      class="form-control"
+                      id="inputNombre"
+                      placeholder="Ingrese el nombre completo"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputGenero">Genero de la persona</label>
+              <select id="inputGenero" class="form-control" v-model="empleado.genero">
+                <option selected>Choose...</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+                <option>Trans-genero</option>
+                <option>No identificado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <label for="inputEstadoCivil">Estado civil</label>
+              <select id="inputEstadoCivil" class="form-control" v-model="empleado.estadoCivil">
+                <option selected>Choose...</option>
+                <option>Casad@</option>
+                <option>Solter@</option>
+                <option>Viud@</option>
+                <option>Unión libre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputEdad">Edad</label>
+              <input
+                      type="number"
+                      v-model="empleado.edad"
+                      class="form-control"
+                      id="inputEdad"
+                      placeholder="Edad de la persona"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">Email</label>
+              <input
+                      type="email"
+                      v-model="empleado.email"
+                      class="form-control"
+                      id="inputEmail"
+                      placeholder="email"
+              />
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <label for="inputTelefono">Número telefónico</label>
+              <input
+                      type="tel"
+                      v-model="empleado.telefono"
+                      class="form-control"
+                      id="inputTelefono"
+                      placeholder="Telefono"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputCargo">Cargo a asignar</label>
+              <select id="inputCargo" class="form-control" v-model="empleado.cargo">
+                <option selected>Choose...</option>
+                <option>Secretaria</option>
+                <option>Administrador</option>
+                <option>Oficios generales</option>
+                <option>Gerente</option>
+                <option>Ocultista</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputSalario">Salario</label>
+              <input
+                      type="number"
+                      v-model="empleado.salario"
+                      class="form-control"
+                      id="inputSalario"
+                      placeholder="Salario a designar"
+              />
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block">Inscribir</button>
       </form>
-    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "Ingresar",
-  data() {
-    return {
-      form: {
-        email: "",
-        name: "",
-        food: null,
-        checked: []
-      },
-      foods: [
-        { text: "Select One", value: null },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Corn"
-      ],
-      show: true
-    };
+  props:{
+    msg:String
   },
-  methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
-      alert(JSON.stringify(this.form));
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.form.email = "";
-      this.form.name = "";
-      this.form.food = null;
-      this.form.checked = [];
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
+  data(){
+    return{
+      empleado:{
+        documento:null,
+        nombreCompleto:null,
+        email:null,
+        cargo:null,
+        salario:null,
+        genero:null,
+        estadoCivil:null,
+        edad:null,
+        telefono:null,
+        id:null
+      }
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    addEmpleado(){
+      this.empleado.id=this.empleado.documento;
+      this.empleado.edad=parseInt(this.empleado.edad);
+      this.empleado.salario=parseFloat(this.empleado.salario);
+      fetch('https://springlab.herokuapp.com/addEmp',{
+        method:'POST',
+        body:JSON.stringify(this.empleado),
+        headers:{
+          'Accept':'application/json',
+          'Content-Type':'application/json'
+        }
+      })
     }
   }
 };
