@@ -73,7 +73,7 @@
         },
         actualizar(cedula)
         {
-            window.location.replace("https://springlab.herokuapp.com/actualizar/"+cedula);
+            window.location.replace("https://springlab.herokuapp.com/?#/actualizar/"+cedula);
         }
     }
     }
