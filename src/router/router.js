@@ -20,7 +20,7 @@ export default new Router({
             component:Ingresar
         },
         {
-            path:'/actualizar/:Emp',
+            path:'/actualizar/',
             name:'/actualizar',
             component:Actualizar
         }
