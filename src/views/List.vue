@@ -31,7 +31,7 @@
                         <td >
                             <button class="btn btn-danger" @click="despedir(reg.documento)">Despedir</button>
                         </td>
-                        <td>  <router-link to="/actualizar/{{reg.documento}}" class="navbar-brand">Actualizar</router-link></a>
+                        <td>  <router-link to="/actualizar/{{reg.documento}}" class="navbar-brand">Actualizar</router-link>
                         </td>
                     </tr>
                     </tbody>
