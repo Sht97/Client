@@ -4,6 +4,7 @@
     <nav class="navbar navbar-light bg-light">
         <router-link to="/ingresar" class="navbar-brand" msg="daniel">Inscripción trabajadores</router-link>
         <router-link to="/list" class="navbar-brand">Lista de trabajadores</router-link>
+                     
 
     </nav>
 </template>
