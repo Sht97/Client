@@ -73,7 +73,7 @@
         },
         actualizar(cedula)
         {
-            window.location.replace("https://springlab.herokuapp.com/?#/actualizar/"+cedula);
+            this.$route.router.go('/actualizar'+cedula)
         }
     }
     }
