@@ -70,6 +70,10 @@
             fetch('https://springlab.herokuapp.com/findAllEmp').
             then(res => res.json().then((data) => {
                 this.list = data}));
+        },
+        actualizar(cedula)
+        {
+            window.location.replace("https://springlab.herokuapp.com/actualizar/"+cedula);
         }
     }
     }
