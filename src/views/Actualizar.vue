@@ -1,5 +1,6 @@
 <template>
-    <div class="container pt-5 pb-5">
+    <div class="container">
+        <h1 class="text-center">Actualización datos</h1>
         <form @submit="actualizar">
             <div class="form-row">
                 <div class="col-md-4 mb-3">
@@ -152,6 +153,6 @@
     };
 </script>
 
-<style scoped>
+<style >
 
 </style>

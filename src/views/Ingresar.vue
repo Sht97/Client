@@ -1,5 +1,6 @@
 <template>
-  <div class="container pt-5 pb-5">
+  <div class="container">
+    <h1 class="text-center">Registro de empleados</h1>
      <form @submit="addEmpleado">
         <div class="form-row">
           <div class="col-md-4 mb-3">
@@ -129,7 +130,6 @@ export default {
     }
   },
   mounted(){
-
   },
   methods:{
     addEmpleado(){
@@ -149,5 +149,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
